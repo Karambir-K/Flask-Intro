@@ -78,3 +78,7 @@ to query database from the python shell:
 from models import BlogPost
 posts = BlogPost.query.all()  (like select all from posts)
 posts
+
+to insert into databse via sqlalchemy
+db.session.add(BlogPost("Good", "I\'m good."))
+to query: db.session.query(BlogPost).all()
