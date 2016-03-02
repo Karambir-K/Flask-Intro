@@ -59,3 +59,22 @@ nothing appears yet -- we need to push our app on git to heroku as follows: 'git
 assign 1 dyno to app:  'heroku ps:scale web=1'
 to check our web process:  heroku ps   
 to check heroku commands possible, type this in terminal: heroku
+
+
+steps to add changes to git and then push to heroku
+git add .
+git commit -am "try/except block added"
+git push heroku master
+
+to run our unittests on heroku: 'heroku run python test.py -v'
+
+to check the things our repository is connected to: git remote -v
+
+install sqlalchemy -- pip install Flask-SQLAlchemy
+
+to create database: python db_create.py
+
+to query database from the python shell:
+from models import BlogPost
+posts = BlogPost.query.all()  (like select all from posts)
+posts
