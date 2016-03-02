@@ -46,3 +46,16 @@ bind gunicorn to localhost with: gunicorn -b 127.0.0.1:4000 app:app
 so now if go to localhost:4000, the app shows up
 make a requirements file with dependencies -- pip freeze > requirements.txt (pip freeze on own shows dependencies)
 create .gitignore file --- so dont upload certain files --- venv, .pyc files, .db files
+
+now lets add to git repository wiht:
+git init
+git add .
+git commit -m "init"   (our initial commit is titled 'init' by convention)
+
+now lets create our heroku space 
+'heroku create flask-intro-karambir'
+we can open app with: 'heroku open'
+nothing appears yet -- we need to push our app on git to heroku as follows: 'git push heroku master'
+assign 1 dyno to app:  'heroku ps:scale web=1'
+to check our web process:  heroku ps   
+to check heroku commands possible, type this in terminal: heroku
