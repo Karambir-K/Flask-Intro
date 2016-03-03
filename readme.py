@@ -96,3 +96,10 @@ export DATABASE_URL="sqlite:///posts.db"
 
 To set the heroku environment variable:
 heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
+
+
+
+create postgres database on heroku:
+heroku addons:create heroku-postgresql:hobby-dev    (creates hobby-dev level database)
+to set it as the database for our project (our db is called postgresql-cubic-22773 ):
+heroku pg:promote postgresql-cubic-22773
