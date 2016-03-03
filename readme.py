@@ -62,6 +62,7 @@ to check heroku commands possible, type this in terminal: heroku
 
 
 steps to add changes to git and then push to heroku
+pip freeze > requirements.txt
 git add .
 git commit -am "try/except block added"
 git push heroku master
@@ -81,4 +82,17 @@ posts
 
 to insert into databse via sqlalchemy
 db.session.add(BlogPost("Good", "I\'m good."))
-to query: db.session.query(BlogPost).all()
+to query: db.session.query(BlogPost).all()	
+
+set up environment variables in our local environment(development vs production for our config file)
+to set up environment variable APP-SETTINGs to a particular value:
+export APP_SETTINGS="config.DevelopmentConfig"
+to check our app config settings in python shell:
+from app import app
+print app.config
+set our database environment variable:
+export DATABASE_URL="sqlite:///posts.db"
+
+
+To set the heroku environment variable:
+heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
