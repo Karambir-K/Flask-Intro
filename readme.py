@@ -113,3 +113,52 @@ heroku config | grep HEROKU_POSTGRESQL
 
 to install python bindings for postgres:
 pip install psycopg2
+
+
+To make a db on flask, lets run our db_create script on flask:
+heroku run python db_create.py
+to add data to heroku postgres from python shell
+heroku run python
+from app import db
+from models import BlogPost
+db.session.add(BlogPost("Hi", "This is my first post on heroku."))
+db.session.commit()
+
+our database environment variable is still pointing to "sqlite:///posts.db"
+we change it with:
+export DATABASE_URL="postgresql://localhost/discover_flask_dev"   (name of db is discover_flask_dev)
+
+now to create our database:
+psql 
+CREATE DATABASE discover_flask_dev;
+then we run our db_create.py file to make the posts table:
+python db_create.py
+
+
+what we did in lesson 14
+setup postgres
+change the environment variable
+setup the database -- db_create.py 
+
+now lets set up database migrations (way to add data without dropping the whole database):
+pip install flask-migrate
+this also installs flask-script -- which makes it easy to run scripts against flask applicaiton
+
+to initialize our migrations (create migrations folder that stores config files and future migration scripts)
+python manage.py db init
+to create the python migration script:
+python manage.py db migrate 
+to apply the migration:
+python manage.py db upgrade
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.5/bin/
+
+
+lets connect to database and add data to it
+psql
+'\c discover_flask_dev'  connnects to the database
+'\d' shows the tables in the db 
+'\d posts' to look closer at posts table 
+'select * from Posts'  to see entries in posts table
+INSERT INTO users VALUES(1, 'admin', 'ad@min.com', 'admin');  ---- insert a user into admin users table
+UPDATE posts SET author_id = 1;   ---- update the posts table with the author_id
