@@ -162,3 +162,7 @@ psql
 'select * from Posts'  to see entries in posts table
 INSERT INTO users VALUES(1, 'admin', 'ad@min.com', 'admin');  ---- insert a user into admin users table
 UPDATE posts SET author_id = 1;   ---- update the posts table with the author_id
+
+to add the migration to heroku as well
+git push heroku master
+heroku run manage.py db upgrade    (we don't need to init the upgrade as that has already been done)
